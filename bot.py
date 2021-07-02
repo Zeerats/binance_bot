@@ -20,7 +20,6 @@ RSI_OVERSOLD = 20
 TRADE_SYMBOL = 'ETHUSDT'
 TRADE_QUANTITY = 0.005
 
-
 prices = []
 closes = []
 status = ''
@@ -56,6 +55,7 @@ def on_open(ws):
     global status
     status = 'CONNECTED TO BINANCE WEBSTREAM'
 
+    
 def on_close(ws):
     global status
     status = 'DISCONNECTED'
@@ -119,5 +119,6 @@ def on_message(ws, message):
             else:
                 print('>>> UNABLE TO BUY (ALREADY IN POSITION)')
 
+                
 ws = websocket.WebSocketApp(SOCKET, on_open=on_open, on_close=on_close, on_message=on_message)
 ws.run_forever()
